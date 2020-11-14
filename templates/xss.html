@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+{% load static %}
+<head>
+<script src="{% static '/buggy_site/jquery-3.5.1.js' %}"></script>
+</head>
+
+<script src="{% static '/buggy_site/xss_view_js.js' %}"></script>
+
+<h1> {{ object.get_total_price }} </h1>
+
+<input type="text" id="myText"><br><br>
+<form action='.' method='POST'>
+              {% csrf_token %}
+<input type='text' id='query' name='query' class='form-control' />
+                  <label for="query" class="">Query</label>
+            <button class="btn btn-primary btn-lg btn-block" type="submit">BUY</button>
+              </form>
+
+<button onclick="myFunction({{ object.get_total_price }})">Try it</button>
+
+<p id="demo"></p>
+
+
+<form class="my-form" action="/xss/" method="POST">
+    <input type="submit" value="Submit">
+</form>
+
+<form action="/xss/" method="POST" id="post-form">
+	<button type="submit">BUY</button>
+</form>
+
+
+
+
+
+
+{% endblock %}
+
+

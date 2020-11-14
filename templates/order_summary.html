@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<head>
+  <style type="text/css">
+    html,
+    body,
+    header,
+    .carousel {
+      height: 60vh;
+    }
+
+    @media (max-width: 740px) {
+
+      html,
+      body,
+      header,
+      .carousel {
+        height: 100vh;
+      }
+    }
+
+    @media (min-width: 800px) and (max-width: 850px) {
+
+      html,
+      body,
+      header,
+      .carousel {
+        height: 100vh;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!--Main layout-->
+  <main>
+    <div class="container"><br>
+      <h1 style="text-align: center">Order Summary</h1>
+        <div class="table-responsive text-nowrap">
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Item title</th>
+        <th scope="col">Price</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Total price</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for order_item in object.items.all %}
+      <tr>
+        <th scope="row">{{ forloop.counter }}</th>
+        <td>{{ order_item.item.title }}</td>
+        <td>{{ order_item.item.price }}</td>
+        <td>{{ order_item.quantity }}</td>
+        <td>${{ order_item.get_total_item_price }}</td>
+      </tr>
+      {% endfor %}
+      <tr>
+        <td colspan="4"><b>Order Total</b></td>
+        <td><b>${{ object.get_total_price }}</b></td>
+      </tr>
+      <tr>
+        <td colspan="5">
+          <a class="btn btn-primary float-right" href='/checkout'>Proceed to checkout</a></td>
+    </tbody>
+  </table>
+
+</div>
+    </div>
+  </main>
+  <!--Main layout-->
+</body>
+{% endblock %}
