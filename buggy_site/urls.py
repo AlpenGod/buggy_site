@@ -33,13 +33,13 @@ from pages.views import (
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home_view),
-    path('xss/', xss_view),
+    path('xss/', xss_view.as_view()),
     path('shop/', HomeView.as_view(),name='shop'),
     path('checkout/', CheckoutView.as_view(), name='checkout'),
     path('order-summary/', OrderSummaryView.as_view(), name='order-summary'),
     path('product/<slug>/', ItemDetailView.as_view(), name='product'),
     path('accounts/', include('allauth.urls')),
-    path('support/', support_view),
+    path('support/', support_view.as_view()),
     path('search/', search_view),
 ]
 

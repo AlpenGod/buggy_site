@@ -6,12 +6,19 @@
 
 Contact us!<br>
 
-Name:
-<input type="text" id="myName"><br><br>
-Message:
-<input type="text" id="message"><br><br>
-File upload(optional):
+<form action='.' method='POST'>
+              {% csrf_token %}
 
- <div id='text'>a{{ object }}b</div>
+<input type='text' id='message' name='message' class='form-control' />
+                  <label for="message" class="">message</label>
+            <button class="btn btn-primary btn-lg btn-block" type="submit">submit</button>
+</form>
+
+
+{% for item in object_list %}
+
+{{ item.message|safe }}<br>
+
+{% endfor %}
 
 {% endblock %}

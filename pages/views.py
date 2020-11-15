@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from django.template.loader import get_template
-from .models import Item, OrderItem, Order, BillingAddress
+from .models import Item, OrderItem, Order, BillingAddress, Message
 from django.views.generic import ListView, DetailView, View
 from django.shortcuts import redirect
 from django.utils import timezone
@@ -9,7 +9,7 @@ from django.contrib import messages
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .forms import CheckoutForm, CartForm, QueryForm
+from .forms import CheckoutForm, CartForm, QueryForm, SupportForm
 from pages.templatetags import cart_template_tags
 import io
 from django.http import FileResponse
@@ -22,27 +22,76 @@ from django.conf import settings
 from reportlab.platypus.doctemplate import SimpleDocTemplate
 from reportlab.platypus import Spacer, Paragraph
 from django.db import connection, transaction
+from django.utils.safestring import mark_safe
+
 
 # Create your views here.
 
 # '/' page view
 def home_view(request):
     return render(request, "index.html",{})
-
+'''
 #test and with xss page view
 def xss_view(request):
-    order = Order.objects.get(user=request.user, ordered=False)
-    context = {
-                'object': order
-            }
-    return render(request, "xss.html",context)
+    try:
+        messages = Message.objects.all()
+        context = {
+                    'object': mark_safe(messages)
+                }
+        print(context)
+        if request.method == 'POST':
+            form = SupportForm(request.POST)
+            name = form.data['name']
+            message = form.data['message']
+            message_model = Message(
+                user=request.user,
+                name = name,
+                message = message,
+                )
+            message_model.save()
+            print(message_model)
+            print(name)
+            print(message)
+            return render(request, "xss.html",context)
+        return render(request, "xss.html",context)
+    except:
+        print('a')
+        return render(request, "xss.html",{})
+'''
+class xss_view(ListView):
+
+    #model = Message
+    template_name = "xss.html"
+    def get_queryset(self):
+        user = self.request.user
+        return Message.objects.filter(user=user)
+
+    def post(self, request, *args, **kwargs):
+        form = SupportForm(request.POST)
+        message = form.data['message']
+        message_model = Message(
+            user=request.user,
+            message = message,
+            )
+        message_model.save()
+        return redirect('/xss/')
 
 # '/support/' page view
-def support_view(request):
-    context = {
-                'object': row
-            }
-    return render(request, "support.html",context)
+class support_view(ListView):
+    template_name = "support.html"
+    def get_queryset(self):
+        user = self.request.user
+        return Message.objects.filter(user=user)
+
+    def post(self, request, *args, **kwargs):
+        form = SupportForm(request.POST)
+        message = form.data['message']
+        message_model = Message(
+            user=request.user,
+            message = message,
+            )
+        message_model.save()
+        return redirect('/support/')
 
 def search_view(request):
     cursor = connection.cursor()

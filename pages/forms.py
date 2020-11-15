@@ -23,3 +23,7 @@ class CartForm(forms.Form):
 class QueryForm(forms.Form):
     query = forms.CharField()
 
+class SupportForm(forms.Form):
+    name = forms.CharField()
+    message = forms.CharField()
+
