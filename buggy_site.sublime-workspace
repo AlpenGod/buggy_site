@@ -1,0 +1,960 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"ob",
+				"object"
+			],
+			[
+				"c",
+				"count_each_letter"
+			],
+			[
+				"mess",
+				"messages"
+			],
+			[
+				"messa",
+				"message"
+			],
+			[
+				"obje",
+				"objects"
+			],
+			[
+				"get",
+				"getElementById"
+			],
+			[
+				"set",
+				"setTitle"
+			],
+			[
+				"shi",
+				"shipping_country"
+			],
+			[
+				"shipp",
+				"shipping_address"
+			],
+			[
+				"doc",
+				"documentTitle"
+			],
+			[
+				"text",
+				"textLines"
+			],
+			[
+				"out",
+				"outfilepath"
+			],
+			[
+				"is",
+				"is_valid"
+			],
+			[
+				"Item",
+				"ItemDetailView"
+			],
+			[
+				"chec",
+				"checkout"
+			],
+			[
+				"Chec",
+				"CheckoutForm"
+			],
+			[
+				"checkout",
+				"checkout_view"
+			],
+			[
+				"check",
+				"checkout-page"
+			],
+			[
+				"ordered",
+				"ordered_date"
+			],
+			[
+				"order_",
+				"order_item"
+			],
+			[
+				"orde",
+				"order_qs"
+			],
+			[
+				"Or",
+				"Order"
+			],
+			[
+				"template",
+				"template_name"
+			],
+			[
+				"Cat",
+				"CATEGORY_CHOICES"
+			],
+			[
+				"xss",
+				"xss_view"
+			],
+			[
+				"MSG",
+				"msg_length"
+			],
+			[
+				"the",
+				"threading"
+			],
+			[
+				"sned",
+				"send_message"
+			],
+			[
+				"sen",
+				"send_message"
+			],
+			[
+				"cl",
+				"client_socket"
+			],
+			[
+				"A",
+				"ACCEPT_THREAD"
+			],
+			[
+				"hello",
+				"hello_world"
+			],
+			[
+				"exe",
+				"EXECUTABLE"
+			],
+			[
+				"list",
+				"listofFiles"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "pages/views.py",
+			"settings":
+			{
+				"buffer_size": 8871,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "pages/admin.py",
+			"settings":
+			{
+				"buffer_size": 280,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "templates/search.html",
+			"settings":
+			{
+				"buffer_size": 1598,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "templates/home-page.html",
+			"settings":
+			{
+				"buffer_size": 7263,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "buggy_site/urls.py",
+			"settings":
+			{
+				"buffer_size": 1778,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "templates/xxe.html",
+			"settings":
+			{
+				"buffer_size": 2324,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "media/read.xml",
+			"settings":
+			{
+				"buffer_size": 941,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "pages/forms.py",
+			"settings":
+			{
+				"buffer_size": 1010,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "templates/support.html",
+			"settings":
+			{
+				"buffer_size": 778,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "templates/xss.html",
+			"settings":
+			{
+				"buffer_size": 459,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "pages/models.py",
+			"settings":
+			{
+				"buffer_size": 3020,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "pages/tests.py",
+			"settings":
+			{
+				"buffer_size": 60,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/kali/git/gitbug/buggy_site/buggy_site/settings.py",
+			"settings":
+			{
+				"buffer_size": 3720,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 200.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/home/kali/buggy_site",
+		"/home/kali/buggy_site/buggy_site",
+		"/home/kali/buggy_site/files",
+		"/home/kali/buggy_site/media",
+		"/home/kali/buggy_site/pages",
+		"/home/kali/buggy_site/pages/__pycache__",
+		"/home/kali/buggy_site/pages/migrations",
+		"/home/kali/buggy_site/static",
+		"/home/kali/buggy_site/static/img",
+		"/home/kali/buggy_site/static/js",
+		"/home/kali/buggy_site/static/scss",
+		"/home/kali/buggy_site/templates",
+		"/home/kali/buggy_site/templates/allauth"
+	],
+	"file_history":
+	[
+		"/home/kali/buggy_site/templates/xxe/read.xml",
+		"/home/kali/cyberadvent/php-reverse-shell.php",
+		"/home/kali/sshbrute/clean1.sh",
+		"/home/kali/cyberadvent/backup.sh",
+		"/home/kali/cyberadvent/big.txt",
+		"/home/kali/sshbrute/pass.txt",
+		"/home/kali/sshbrute/user.txt",
+		"/home/kali/phprs.php",
+		"/home/kali/sshbrute/clean.sh",
+		"/home/kali/Empire/EMpirezGIta/Empire/lib/common/empire.py",
+		"/home/kali/shell.ps1",
+		"/home/kali/Empire/setup/setup_database.py",
+		"/home/kali/python_string_operations/string_length_calculation.py",
+		"/home/kali/python_string_operations/count_each_letter.py",
+		"/home/kali/buggy_site/templates/product-page.html",
+		"/home/kali/buggy_site/templates/search.html",
+		"/home/kali/buggy_site/templates/home-page.html",
+		"/home/kali/buggy_site/buggy_site/settings.py",
+		"/home/kali/buggy_site/buggy_site/asgi.py",
+		"/home/kali/buggy_site/static/buggy_site/xss_view_js.js",
+		"/home/kali/buggy_site/templates/footer.html",
+		"/home/kali/buggy_site/buggy_site/urls.py",
+		"/home/kali/buggy_site/pages/templatetags/cart_template_tags.py",
+		"/home/kali/buggy_site/static/buggy_site/jquery-3.5.1.js",
+		"/home/kali/git/buggy_site/buggy_site/settings.py",
+		"/home/kali/buggy_site/templates/navbar.html",
+		"/home/kali/buggy_site/pages/models.py",
+		"/home/kali/buggy_site/templates/checkout-page.html",
+		"/home/kali/buggy_site/pages/forms.py",
+		"/home/kali/buggy_site/pages/views.py",
+		"/home/kali/buggy_site/templates/invoice.html",
+		"/home/kali/startup.sh",
+		"/home/kali/buggy_site/templates/home.html",
+		"/home/kali/buggy_site/static/buggy_site/style.css",
+		"/home/kali/buggy_site/templates/allauth/account/signup.html",
+		"/home/kali/buggy_site/templates/checkout.html",
+		"/home/kali/buggy_site/templates/order_summary.html",
+		"/home/kali/buggy_site/pages/admin.py",
+		"/home/kali/buggy_site/templates/index.html",
+		"/home/kali/buggy_site/templates/allauth/account/login.html",
+		"/home/kali/buggy_site/templates/allauth/account/logout.html",
+		"/home/kali/buggy_site/templates/head.html",
+		"/home/kali/buggy_site/static/buggy_site/styles.css",
+		"/home/kali/buggy_site/templates/base.html",
+		"/home/kali/buggy_site/templates/scripts.html",
+		"/home/kali/buggy_site/templates/xss.html",
+		"/home/kali/buggy_site/manage.py",
+		"/home/kali/buggy_site/buggy_site/static/buggy_site/style.css",
+		"/home/kali/django_test/mytestsite/locallibrary/catalog/views.py",
+		"/home/kali/django_test/mytestsite/locallibrary/locallibrary/urls.py",
+		"/home/kali/django_test/mytestsite/locallibrary/locallibrary/settings.py",
+		"/home/kali/django_test/mytestsite/locallibrary/catalog/templates/index.html",
+		"/home/kali/django_test/mytestsite/locallibrary/catalog/static/css/styles.cdd",
+		"/home/kali/django_test/mytestsite/locallibrary/catalog/templates/base_generic.html",
+		"/home/kali/django_test/mytestsite/locallibrary/catalog/urls.py",
+		"/home/kali/django_test/mytestsite/locallibrary/catalog/admin.py",
+		"/home/kali/django_test/mytestsite/locallibrary/catalog/models.py",
+		"/home/kali/SQLmapPOST/request",
+		"/home/kali/Desktop/python_socket_practise/server.py",
+		"/home/kali/Desktop/python_chat/website/server.py",
+		"/home/kali/Desktop/python_chat/website/person.py",
+		"/home/kali/Desktop/python_chat/client/test.py",
+		"/home/kali/Desktop/python_socket_practise/client.py",
+		"/home/kali/Desktop/python_chat/website/er",
+		"/home/kali/bash/warmup.sh",
+		"/home/kali/bash/test.sh",
+		"/home/kali/pythong/sum67.py",
+		"/home/kali/pythong/has22.py",
+		"/home/kali/pythong/zad.py",
+		"/home/kali/bash/funkcje.sh",
+		"/home/kali/bash/split.sh",
+		"/home/kali/bash/skrypt.sh",
+		"/home/kali/bash/skrypt",
+		"/home/kali/bsoxd/passwdStats.sh",
+		"/home/kali/Desktop/instagram.py",
+		"/home/kali/pythong/test.py",
+		"/home/kali/nokia-book/skrypt.sh",
+		"/home/kali/gnu3/test/Makefile",
+		"/home/kali/gnu3/Makefile",
+		"/home/kali/gnu3/src/hello.cpp",
+		"/home/kali/gnu3/include/hello.h",
+		"/home/kali/gnu3/src/main.cpp",
+		"/home/kali/skrypt.txt",
+		"/home/kali/ex1bash",
+		"/home/kali/gnu3/main.cpp",
+		"/home/kali/gcc/main.c",
+		"/home/kali/gcc2/Makefile",
+		"/home/kali/gcc/Makefile",
+		"/home/kali/Downloads/folder/test.py",
+		"/home/kali/.tmux.conf",
+		"/home/kali/owasp10.py",
+		"/home/kali/usrpssw.txt",
+		"/home/kali/commandinjectionwindowscheatsheet.txt",
+		"/home/kali/Downloads/folder/results.txt",
+		"/home/kali/Downloads/folder/metadata.py",
+		"/home/kali/Downloads/folder/tryhackmescript.py",
+		"/home/kali/cyfry1-10000",
+		"/home/kali/phprsv2.php",
+		"/home/kali/pythonctfscript.py",
+		"/home/kali/rockyou.txt",
+		"/home/kali/ctf/id_rsa",
+		"/home/kali/Downloads/adminwordlist.txt",
+		"/home/kali/Downloads/usernamewordlist.txt",
+		"/home/kali/Downloads/msqlus.txt",
+		"/home/kali/KaliLists/dirbuster/directory-list-lowercase-2.3-small.txt",
+		"/opt/Empire/README.md",
+		"/home/kali/id_rsa",
+		"/home/kali/big.txt",
+		"/home/kali/hash",
+		"/home/kali/Downloads/tryhackmescript.py",
+		"/home/kali/test/xd.sh",
+		"/home/kali/script.sh",
+		"/home/kali/phprs.phtml",
+		"/home/kali/systemctlsuid.txt",
+		"/usr/share/nmap/scripts/smb-enum-users.nse",
+		"/home/kali/XD.txt",
+		"/home/kali/hash.txt",
+		"/home/kali/loginbypass.txt",
+		"/home/kali/key.pem",
+		"/home/kali/mypasswd.txt",
+		"/home/kali/Downloads/dirwordlist.txt",
+		"/home/kali/openvas.txt",
+		"/home/kali/cheatsheetsql.txt",
+		"/home/kali/sqlinject.txt",
+		"/home/kali/Downloads/report-5d97f556-9c5f-4539-b923-ba0382bf0272(1).xml",
+		"/home/kali/Downloads/passlist.txt"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"Message",
+			"}))\n",
+			"footer",
+			"static",
+			"masthead",
+			"bg-sign",
+			"bg-mast",
+			"bg-signup",
+			"static",
+			"demo",
+			"sign",
+			"bg-sign",
+			"href",
+			"sqlite3",
+			"Version",
+			"ports"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 5,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "pages/views.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8871,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1253,
+								1253
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 5475.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "pages/admin.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 280,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								251,
+								251
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "templates/search.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1598,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1410,
+								1410
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 675.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "templates/home-page.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7263,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5592,
+								5592
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 4650.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "buggy_site/urls.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1778,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1542,
+								1542
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 11,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "templates/xxe.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2324,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1001,
+								1001
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 375.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "media/read.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 941,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								146,
+								146
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "pages/forms.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1010,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								917,
+								917
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "templates/support.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 778,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								63,
+								63
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 10,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "templates/xss.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 459,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								67,
+								67
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 1.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "pages/models.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3020,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2913,
+								2913
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2157.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "pages/tests.py",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 60,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"file": "/home/kali/git/gitbug/buggy_site/buggy_site/settings.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3720,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								44,
+								44
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 12,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 34.0
+	},
+	"input":
+	{
+		"height": 102.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 102.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "buggy_site.sublime-project",
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 278.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

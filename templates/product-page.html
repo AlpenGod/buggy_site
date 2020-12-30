@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<body>
+  <!--Main layout-->
+  <main class="mt-5 pt-4">
+    <div class="container dark-grey-text mt-5 ">
+
+      <!--Grid row-->
+      <div class="row wow fadeIn">
+
+        <!--Grid column-->
+        <div class="col-md-6 mb-4">
+
+          <img src="{{ object.image.url }}" class="img-fluid" alt="">
+
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-md-6 mb-4">
+
+          <!--Content-->
+          <div class="p-4 ">
+
+            <div class="mb-3 ">
+              <a href="">
+                <span class="badge purple mr-1">{{ object.get_category_display }}</span>
+              </a>
+            </div>
+
+             <p id="title" class="lead font-weight-bold"><h1>{{ object.title }}</h1></p>
+
+            <p class="lead">
+              <span class="mr-1">
+              <span>${{ object.price }}</span>
+            </p>
+
+            <p class="lead font-weight-bold">Description</p>
+
+            <p>{{ object.description }}</p>
+
+            <form action='.' method='POST'>
+              {% csrf_token %}
+              <!-- Default input -->
+              {% if user.is_authenticated %}
+              <input type='number' value='1' id='cart_quantity' name='cart_quantity' class='form-control' />
+                  <label for="cart_quantity" class="">Quantity</label>
+                  <input required="" type="hidden" name="id" value={{ object.slug }}>
+                  <button class="btn btn-primary btn-lg col" type="submit" name="check">Check availability</button>
+                  <button class="btn btn-primary btn-lg col" type="submit" name="buy">BUY</button>
+                 {% else %}
+            <a class="nav-link waves-effect" href="{% url 'account_login' %}">
+              <span class="btn btn-primary btn-lg btn-block"> Login to add to cart </span>
+            </a>
+          {% endif %}
+
+                
+            </form>
+            <br>
+          </div>
+          <!--Content-->
+
+        </div>
+        <!--Grid column-->
+
+      </div>
+      <!--Grid row-->
+
+    </div>
+  </main>
+  <!--Main layout-->
+</body>
+{% endblock %}

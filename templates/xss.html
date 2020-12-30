@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+<form action='.' method='POST'>
+              {% csrf_token %}
+
+<input type='text' id='message' name='message' class='form-control' />
+                  <label for="message" class="">message</label>
+            <button class="btn btn-primary btn-lg btn-block" type="submit">submit</button>
+</form>
+
+
+{% for item in object_list %}
+
+{{ item.message|safe }}<br>
+
+
+{% endfor %}
+
+{% endblock %}
+
+
