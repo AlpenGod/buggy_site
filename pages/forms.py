@@ -10,11 +10,7 @@ class CheckoutForm(forms.Form):
     expiration = forms.CharField(required=False)
     cvv = forms.CharField(required=False)
     number = forms.CharField(required=False)
-    shipping_country = CountryField(blank_label='(select country)').formfield(
-        required=False,
-        widget=CountrySelectWidget(attrs={
-            'class': 'custom-select d-block w-100',
-        }))
+    shipping_country = forms.CharField(required=False)
     shipping_zip = forms.CharField(required=False)
 
 class CartForm(forms.Form):

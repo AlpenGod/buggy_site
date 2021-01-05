@@ -43,7 +43,7 @@ class OrderItem(models.Model):
 		return f"{self.quantity} of {self.item.title}"
 
 	def get_total_item_price(self):
-		return self.quantity * self.item.price
+		return round(self.quantity * self.item.price,2)
 
 	def get_final_price(self):
 		return self.get_total_item_price()
@@ -64,7 +64,7 @@ class Order(models.Model):
 		total=0
 		for order_item in self.items.all():
 			total += order_item.get_final_price()
-		return total
+		return round(total,2)
 
 	def get_total_quantity(self):
 		total=0

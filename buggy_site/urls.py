@@ -21,20 +21,17 @@ from django.contrib import admin
 from django.urls import path, include
 from pages.views import (
     home_view, 
-    xss_view, 
     HomeView, 
     CheckoutView, 
     ItemDetailView, 
     OrderSummaryView,
     support_view,
     search_view,
-    xxe_view,
     )
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home_view),
-    path('xss/', xss_view.as_view()),
     path('shop/', HomeView.as_view(),name='shop'),
     path('checkout/', CheckoutView.as_view(), name='checkout'),
     path('order-summary/', OrderSummaryView.as_view(), name='order-summary'),
@@ -42,7 +39,6 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('support/', support_view.as_view()),
     path('search/', search_view),
-    path('xxe/', xxe_view),
 ]
 
 if settings.DEBUG:
