@@ -59,7 +59,7 @@ class support_view(LoginRequiredMixin, View):
                     output = 'Unserializing error'
             elif file.name[-3:]=="xml":
                 with open(path + "/" + file.name) as fh:
-                    tree = etree.parse(fh)
+                    tree = etree.parse(fh) #lxml <4.6.2 is vulnerable to xss (use &lt; and &gt; instead of < and >)
                 output = ['xml']
                 for node in tree.iter():
                     output.append(node.tag + " " + node.text)
@@ -95,25 +95,6 @@ class xss_view(ListView):
             )
         message_model.save()
         return redirect('/xss/')
-
-'''
-# '/support/' page view
-class support_view(LoginRequiredMixin, ListView):
-    template_name = "support.html"
-
-    def get_queryset(self):
-        user = self.request.user
-        return Message.objects.filter(user=user)
-
-    def post(self, request, *args, **kwargs):
-        form = SupportForm(request.POST)
-        message = form.data['message']
-        message_model = Message(
-            user=request.user,
-            message = message,
-            )
-        message_model.save()
-        return redirect('/support/')'''
 
 def search_view(request):
     cursor = connection.cursor()
@@ -271,6 +252,6 @@ class CheckoutView(View):
             doc.build(Story)
             return redirect('/media/' + 'f' + str(counter) + '.pdf')
 
-            billing_address.delete()
+            #billing_address.delete()
 
 

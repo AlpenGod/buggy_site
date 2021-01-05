@@ -43,10 +43,8 @@
               {% csrf_token %}
               <!-- Default input -->
               {% if user.is_authenticated %}
-              <input type='number' placeholder="Insert quantity here" id='cart_quantity' name='cart_quantity' class='form-control' />
+              <input type='number' placeholder="Insert quantity here" id='cart_quantity' name='cart_quantity' class='form-control'  value="1"/>
                   <label for="cart_quantity" class="">Quantity</label>
-                              <a id="check">Check availability</a>
-                              <a id="cos">Check cos</a>
                   <button class="btn btn-primary btn-lg col" type="submit" name="buy">BUY</button>
                  {% else %}
             <a class="nav-link waves-effect" href="{% url 'account_login' %}">
@@ -56,8 +54,6 @@
 
                 
             </form>
-            <input required="" type="hidden" id="slug" value={{ object.slug }}>
-{{ query }}
             <br>
           </div>
           <!--Content-->

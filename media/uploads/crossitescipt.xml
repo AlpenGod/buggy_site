@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<!DOCTYPE Example [
+<!--This is an entity, which will expand in the From and Signature nodes-->
+]>
+<Email>
+  <To>Team</To>
+  <From>&lt;img src="" onerror=alert(1)&gt;</From>
+  <Subj>Reminder</Subj>
+  <Body>TPS reports due.</Body>
+</Email>

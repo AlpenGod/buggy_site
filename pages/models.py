@@ -8,27 +8,12 @@ from reportlab.pdfgen import canvas
 
 # Create your models here.
 
-CATEGORY_CHOICES = (
-	('S', 'Shirt'),
-	('SW', 'Sport wear'),
-	('OW', 'Outwear')
-)
-
-LABEL_CHOICES = (
-	('p', 'primary'),
-	('s', 'secondary'),
-	('d', 'danger')
-)
-
 class Item(models.Model):
 	title = models.CharField(max_length=100)
 	price = models.FloatField()
-	category = models.CharField(choices=CATEGORY_CHOICES, max_length=2)
-	label = models.CharField(choices=LABEL_CHOICES, max_length=2)
 	slug = models.SlugField()
 	description = models.TextField()
 	image = models.ImageField()
-	file = models.FileField(blank=True)
 
 	def __str__(self):
 		return self.title
