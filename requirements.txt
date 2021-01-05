@@ -32,5 +32,8 @@ six==1.15.0
 sqlparse==0.4.1
 tinycss2==1.1.0
 urllib3==1.25.11
+
+//ITS URLLIB3 1.25.2 BCS OF VULN I CANT REPRODUCE
+
 webencodings==0.5.1
 xhtml2pdf==0.2.5

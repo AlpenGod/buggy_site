@@ -9,7 +9,7 @@ from django.contrib import messages
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .forms import CheckoutForm, CartForm, QueryForm, SupportForm
+from .forms import CheckoutForm, CartForm, QueryForm, SupportForm, TestForm, UploadFileForm
 from pages.templatetags import cart_template_tags
 import io
 from django.http import FileResponse
@@ -23,7 +23,10 @@ from reportlab.platypus.doctemplate import SimpleDocTemplate
 from reportlab.platypus import Spacer, Paragraph
 from django.db import connection, transaction
 from django.utils.safestring import mark_safe
-
+import pickle
+from django.core.files.storage import FileSystemStorage
+from pathlib import Path
+import xml.etree.ElementTree as etree
 
 # Create your views here.
 
@@ -33,34 +36,48 @@ def home_view(request):
 
 def xxe_view(request):
     return render(request, "xxe.html",{})
-'''
-#test and with xss page view
-def xss_view(request):
-    try:
-        messages = Message.objects.all()
+
+class support_view(LoginRequiredMixin, View):
+
+    def get(self, request, *args, **kwargs):
+        return render(request, "support_page.html",{})
+
+    def post(self, request, *args, **kwargs):
+        BASE_DIR = Path(__file__).resolve().parent.parent
+        try:
+            file = request.FILES['document']
+            path = os.path.join(BASE_DIR, "media", "uploads")
+            fs = FileSystemStorage(location = path)
+            if fs.exists(file.name):
+                fs.delete(file.name)
+            fs.save(file.name, file)
+            output = 'output'
+            if file.name[-3:]=="txt":
+                try:
+                    output = str(pickle.load(open(path + "/" + file.name,'rb')))
+                except pickle.UnpicklingError:
+                    output = 'Unserializing error'
+            elif file.name[-3:]=="xml":
+                with open(path + "/" + file.name) as fh:
+                    tree = etree.parse(fh)
+                output = ['xml']
+                for node in tree.iter():
+                    output.append(node.tag + " " + node.text)
+            elif file.name[-3:]=="jpg" or file.name[-3:]=="png":
+                output = '<div><img src="/media/uploads/'+file.name+'"/></div>'
+            else:
+                output = "Unsupported file type"
+                fs.delete(file.name)
+        except:
+            output = "Empty"
+        form = SupportForm(request.POST)
+        message = form.data['message']
         context = {
-                    'object': mark_safe(messages)
-                }
-        print(context)
-        if request.method == 'POST':
-            form = SupportForm(request.POST)
-            name = form.data['name']
-            message = form.data['message']
-            message_model = Message(
-                user=request.user,
-                name = name,
-                message = message,
-                )
-            message_model.save()
-            print(message_model)
-            print(name)
-            print(message)
-            return render(request, "xss.html",context)
-        return render(request, "xss.html",context)
-    except:
-        print('a')
-        return render(request, "xss.html",{})
-'''
+            'file' : output,
+            'message' : message,
+        }
+        return render(request, "support_page.html", context)
+
 class xss_view(ListView):
 
     #model = Message
@@ -79,6 +96,7 @@ class xss_view(ListView):
         message_model.save()
         return redirect('/xss/')
 
+'''
 # '/support/' page view
 class support_view(LoginRequiredMixin, ListView):
     template_name = "support.html"
@@ -95,7 +113,7 @@ class support_view(LoginRequiredMixin, ListView):
             message = message,
             )
         message_model.save()
-        return redirect('/support/')
+        return redirect('/support/')'''
 
 def search_view(request):
     cursor = connection.cursor()
@@ -178,9 +196,12 @@ class ItemDetailView(DetailView):
             else:
                 return redirect("product", slug=slug)
         if 'check' in request.POST:
+            xml = """<?xml version='1.0' encoding='utf-8'?>
+            #<a>б</a>"""
+            headers = {'Content-Type': 'application/xml'} # set what your server accepts
             return redirect("product", slug=slug)
 
-#finalise transaction view
+#finalize transaction view
 class CheckoutView(View):
 
     def get(self, *args, **kwargs):
