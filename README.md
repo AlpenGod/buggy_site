@@ -18,9 +18,10 @@ Aimed at begginers.
  
  
 **<h2>Screenshots**</h2>
-<div align="center">
+
 <a href="https://ibb.co/d2gNb8P"><img src="https://i.ibb.co/xjHnmx1/Screenshot-1.png" alt="buggy_site" border="0"></a>
-<a href="https://ibb.co/R9BWtnt"><img src="https://i.ibb.co/SPdpHTH/Screenshot-3.png" alt="buggy_shop" border="0"></a></div>
+ 
+<a href="https://ibb.co/R9BWtnt"><img src="https://i.ibb.co/SPdpHTH/Screenshot-3.png" alt="buggy_shop" border="0"></a>
 
 **<h2>Features**</h2>
 
