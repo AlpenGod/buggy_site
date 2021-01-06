@@ -1,5 +1,5 @@
-<div align="center">
-<a href="https://ibb.co/MBRZvZ4"><img src="https://i.ibb.co/3R0434q/Screenshot-4.png" alt="logo" border="0"></a></div>
+
+<a href="https://ibb.co/MBRZvZ4"><img src="https://i.ibb.co/3R0434q/Screenshot-4.png" alt="logo" border="0"></a>
 
 **<h1>buggy_site - A free, vulnerable hacking site for begginers**</h1>
 
