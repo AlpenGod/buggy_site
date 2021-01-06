@@ -8,7 +8,7 @@
 **Current Release: v1.0.0 (06.01.2021)**
 **<h2>Overview**</h2>buggy_site is a django online shop stuffed with tons of bugs and vulnerabilities based on OWASP Top 10 document.
 As a great playground, buggy_site gives users the opportunity to perform complex web application audit, with many attack vectors.
-Aimed at begginers.
+Suitable for begginers.
 **<h2>Installation & Usage**</h2>
  - `git clone https://github.com/AlpenGod/buggy_site.git`
  - `cd buggy_site`
