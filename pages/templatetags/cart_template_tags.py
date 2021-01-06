@@ -3,7 +3,7 @@ from pages.models import Order,OrderItem
 
 register = template.Library()
 
-#sums total item quantity
+#sums total item quantity at navbar
 @register.filter
 def cart_item_count(user):
 	if user.is_authenticated:

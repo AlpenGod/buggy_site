@@ -2,23 +2,22 @@
 <html>
 	{% include 'head.html' %}
 	{% include 'navbar.html' %}
-<div class="mt-5 pt-4">
-	{% if messages %}
-    {% for message in messages %}
-	<div class="alert alert-{{ message.tags }}" role="alert">
-	  {{ message }}
-	  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-	  <span aria-hidden="true">&times;</span>
-	  </button>
+	<div class="mt-5 pt-4">
+		{% if messages %}
+		    {% for message in messages %}
+				<div class="alert alert-{{ message.tags }}" role="alert">
+				  {{ message }}
+				  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				  	<span aria-hidden="true">&times;</span>
+				  </button>
+				</div>
+		    {% endfor %}
+		{% endif %}
 	</div>
-    {% endfor %}
-	{% endif %}
-</div>
-
 	{% block content %}
-	type smth here
+		<BLOCK BODY>
 	{% endblock %}
-	
+
 	{% include 'footer.html' %}
 	{%include 'scripts.html' %}
 </html>

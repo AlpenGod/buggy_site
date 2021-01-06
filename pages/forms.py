@@ -22,10 +22,3 @@ class QueryForm(forms.Form):
 class SupportForm(forms.Form):
     name = forms.CharField()
     message = forms.CharField()
-
-class TestForm(forms.Form):
-    message = forms.CharField()
-    
-class UploadFileForm(forms.Form):
-    title = forms.CharField(max_length=50)
-    file = forms.FileField()

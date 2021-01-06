@@ -1,43 +1,31 @@
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponse
-from django.template.loader import get_template
-from .models import Item, OrderItem, Order, BillingAddress, Message
+from .models import Item, OrderItem, Order, BillingAddress
 from django.views.generic import ListView, DetailView, View
 from django.shortcuts import redirect
 from django.utils import timezone
 from django.contrib import messages
 from django.core.exceptions import ObjectDoesNotExist
-from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .forms import CheckoutForm, CartForm, QueryForm, SupportForm, TestForm, UploadFileForm
-from pages.templatetags import cart_template_tags
-import io
-from django.http import FileResponse
+from .forms import CheckoutForm, CartForm, QueryForm, SupportForm
 from reportlab.pdfgen import canvas
 from reportlab.lib.units import inch
-from reportlab.lib.pagesizes import letter, A4
 from reportlab.pdfgen.canvas import Canvas
 import os
 from django.conf import settings
 from reportlab.platypus.doctemplate import SimpleDocTemplate
 from reportlab.platypus import Spacer, Paragraph
-from django.db import connection, transaction
-from django.utils.safestring import mark_safe
+from django.db import connection
 import pickle
 from django.core.files.storage import FileSystemStorage
 from pathlib import Path
-import xml.etree.ElementTree as etree
+from xml.etree.ElementTree import parse
 
-# Create your views here.
-
-# '/' page view
+# '/' buggy_site view
 def home_view(request):
     return render(request, "index.html",{})
 
-def xxe_view(request):
-    return render(request, "xxe.html",{})
-
-class support_view(LoginRequiredMixin, View):
+# '/support' template view
+class support_view(View):
 
     def get(self, request, *args, **kwargs):
         return render(request, "support_page.html",{})
@@ -59,12 +47,14 @@ class support_view(LoginRequiredMixin, View):
                 output = 'output'
                 if file.name[-3:]=="txt":
                     try:
+                        #harmful!
                         output = str(pickle.load(open(path + "/" + file.name,'rb')))
                     except pickle.UnpicklingError:
                         output = 'Unserializing error'
                 elif file.name[-3:]=="xml":
                     with open(path + "/" + file.name) as fh:
-                        tree = etree.parse(fh) 
+                        #harmful!
+                        tree = parse(fh) 
                         #lxml <4.6.2 is vulnerable to xss (use &lt; and &gt; instead of < and >)
                     output = ['xml']
                     for node in tree.iter():
@@ -76,6 +66,7 @@ class support_view(LoginRequiredMixin, View):
                     fs.delete(file.name)
             except:
                 output = "Empty"
+            #harmful! .cleaned_data missing
             message = form.data['message']
             context = {
                 'file' : output,
@@ -83,11 +74,13 @@ class support_view(LoginRequiredMixin, View):
             }
             return render(request, "support_page.html", context)
 
+# '/search' template view
 def search_view(request):
     cursor = connection.cursor()
     if 'query' in request.session:
         name=request.session.pop('query',{})
         name = name[0].upper() + name[1:].lower()
+        #harmful!
         cursor.execute("SELECT * from pages_item WHERE title = '" + name +"'")
     row=cursor.fetchone()
     context = {
@@ -101,7 +94,7 @@ def search_view(request):
             }
     return render(request, "search.html", context)
 
-#main shop view
+#main buggy_shop view
 class HomeView(ListView):
     model = Item
     template_name = "home-page.html"
@@ -153,6 +146,7 @@ class ItemDetailView(DetailView):
                     order_item.save()
                     messages.info(request, "This item was added to your cart")
             else:
+                #if not, create an order
                 ordered_date = timezone.now()
                 order = Order.objects.create(user=request.user, ordered_date=ordered_date)
                 order.items.add(order_item)
@@ -162,7 +156,7 @@ class ItemDetailView(DetailView):
         return redirect("product", slug=slug)
 
 #finalize transaction view
-class CheckoutView(View):
+class CheckoutView(LoginRequiredMixin,View):
 
     def get(self, *args, **kwargs):
         form = CheckoutForm()
@@ -181,6 +175,7 @@ class CheckoutView(View):
     def post(self, request, *args, **kwargs):
         form = CheckoutForm(self.request.POST or None)
         order = Order.objects.get(user=self.request.user, ordered=False)
+        #get user info to finalize transaction
         if form.is_valid():
             shipping_address = form.cleaned_data.get('shipping_address')
             first_name = form.cleaned_data.get('first_name')
@@ -206,13 +201,16 @@ class CheckoutView(View):
             billing_address.save()
             order.billing_address=billing_address
             qs = OrderItem.objects.filter(user=self.request.user, ordered=False)
+
+            #for printing items in pdf
             print_items = ''
             for i in range(len(qs)):
                 if i==len(qs)-1:
                     print_items = print_items + qs[i].item.title + '.'
                 else:
                     print_items =print_items + qs[i].item.title + ', '
-            #pdf logic
+
+            #pdf generator logic for payment confirmation
             textLines=[
             'Payment confirmation',
             ''
@@ -241,14 +239,71 @@ class CheckoutView(View):
                 Story.append(Spacer(1,0.2*inch))
             doc.build(Story)
 
+            #delete completed order
             for order_item in qs:
                 order_item.delete()
             order.delete()
+
+            #cuz we don't store unnecessary data!
             billing_address.delete()
 
             messages.info(self.request, "Success! Your payment confirmation is available on: "+
                 request.get_host()+'/media/' + 'f' + str(counter) + '.pdf')
             return redirect("/shop/")
 
+#remove one piece of an item in cart in summary_view
+def summary_remove(request, slug):
+    if request.user.is_authenticated:
+        item = get_object_or_404(Item, slug=slug)
+        order_item, created = OrderItem.objects.get_or_create(
+        item=item,
+        user=request.user,
+        ordered=False
+        )
+        order_qs = Order.objects.filter(user=request.user, ordered=False)
+        if order_qs.exists():
+            order_item.quantity -= 1
+            if order_item.quantity == 0:
+                order_item.delete()
+            else:
+                order_item.save()
+            messages.info(request, "This item quantity was updated")
+        return redirect("order-summary")
+    else:
+        return redirect('/accounts/login/')
 
+#remove an item in cart in summary_view
+def summary_remove_all(request, slug):
+    if request.user.is_authenticated:
+        item = get_object_or_404(Item, slug=slug)
+        order_item, created = OrderItem.objects.get_or_create(
+        item=item,
+        user=request.user,
+        ordered=False
+        )
+        order_qs = Order.objects.filter(user=request.user, ordered=False)
+        if order_qs.exists():
+            order_item.delete()
+            messages.info(request, "This item quantity was updated")
+        return redirect("order-summary")
+    else:
+        return redirect('/accounts/login/')
+
+#ad one piece of an item in cart in summary_view
+def summary_add(request, slug):
+    if request.user.is_authenticated:
+        item = get_object_or_404(Item, slug=slug)
+        order_item, created = OrderItem.objects.get_or_create(
+        item=item,
+        user=request.user,
+        ordered=False
+        )
+        order_qs = Order.objects.filter(user=request.user, ordered=False)
+        if order_qs.exists():
+            order_item.quantity += 1
+            order_item.save()
+            messages.info(request, "This item quantity was updated")
+        return redirect("order-summary")
+    else:
+        return redirect('/accounts/login/')
 

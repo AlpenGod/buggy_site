@@ -12,23 +12,20 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 import os
-#from django.conf import settings
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret! //WHOOOPS
-SECRET_KEY = 'hi'
+SECRET_KEY = '7vh0f8#ia)%cv=98$sy%*$$%dc^t^isa$fbwv7vxzh!8x46mxm'
 
 # SECURITY WARNING: don't run with debug turned on in production! //DANGEROUS!
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -86,7 +83,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'buggy_site.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
@@ -97,10 +93,8 @@ DATABASES = {
     }
 }
 
-
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
-
 
 '''
 WE DON'T NEED THAT! 
@@ -144,6 +138,7 @@ AUTHENTICATION_BACKENDS = [
 SITE_ID = 1
 
 LOGIN_REDIRECT_URL = '/shop/'
+
 ACCOUNT_LOGOUT_REDIRECT_URL = '/shop/'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

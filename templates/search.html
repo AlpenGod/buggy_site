@@ -2,62 +2,39 @@
 {% load static %}
 {% block content %}
 
-
 <a class="navbar-brand waves-effect justify-content-center">
-<strong class="blue-text">Search results: <br></strong></a>
+  <strong class="blue-text">Search results: <br></strong>
+</a>
+<section class="text-center mb-4">
+  <div class="row wow fadeIn">
+    <div class="col-lg-3 col-md-6 mb-4">
+      {% if object %}
+      <div class="card">
 
-      <!--Section: Products v.3-->
-      <section class="text-center mb-4">
-
-        <!--Grid row-->
-        <div class="row wow fadeIn">
-
-          <!--Grid column-->
-          <div class="col-lg-3 col-md-6 mb-4">
-{% if object %}
-            <!--Card-->
-            <div class="card">
-
-              <!--Card image-->
-              <div class="view overlay">
-                <img src="/media/{{ object.5 }}" class="card-img-top">
-                <a href="/product/{{ object.3 }}">
-                  <div class="mask rgba-white-slight"></div>
-                </a>
-              </div>
-              <!--Card image-->
-
-              <!--Card content-->
-              <div class="card-body text-center">
-                <!--Category & Title-->
-                <a class="grey-text">
-                </a>
-                <h5>
-                  <strong>
-                    <a class="dark-grey-text">{{ object.1 }}
-                    </a>
-                  </strong>
-                </h5>
-
-                <h4 class="font-weight-bold blue-text">
-                  <strong>${{ object.2 }}</strong>
-                </h4>
-
-              </div>
-              <!--Card content-->
-
-            </div>
-            <!--Card-->
-{% else %}
-No results found.
-{% endif %}
-          </div>
-          <!--Grid column-->
-
+        <div class="view overlay">
+          <img src="/media/{{ object.5 }}" class="card-img-top">
+          <a href="/product/{{ object.3 }}">
+            <div class="mask rgba-white-slight"></div>
+          </a>
         </div>
-        <!--Grid row-->
 
-      </section>
-      <!--Section: Products v.3-->
+        <div class="card-body text-center">
+          <a class="grey-text"></a>
+          <h5>
+            <strong>
+              <a class="dark-grey-text">{{ object.1 }}</a>
+            </strong>
+          </h5>
+          <h4 class="font-weight-bold blue-text">
+            <strong>${{ object.2 }}</strong>
+          </h4>
+        </div>
 
+      </div>
+      {% else %}
+      No results found.
+      {% endif %}
+    </div>
+  </div>
+</section>
 {% endblock %}

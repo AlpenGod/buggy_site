@@ -27,21 +27,26 @@ from pages.views import (
     OrderSummaryView,
     support_view,
     search_view,
+    summary_remove,
+    summary_add,
+    summary_remove_all,
     )
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', home_view),
+    path('admin/', admin.site.urls, name='admin'),
+    path('', home_view, name='home'),
     path('shop/', HomeView.as_view(),name='shop'),
     path('checkout/', CheckoutView.as_view(), name='checkout'),
     path('order-summary/', OrderSummaryView.as_view(), name='order-summary'),
     path('product/<slug>/', ItemDetailView.as_view(), name='product'),
     path('accounts/', include('allauth.urls')),
-    path('support/', support_view.as_view()),
-    path('search/', search_view),
+    path('support/', support_view.as_view(), name='support'),
+    path('search/', search_view, name='search'),
+    path('summary_remove/<slug>/', summary_remove, name='summary_remove'),
+    path('summary_add/<slug>/', summary_add, name='summary_add'),
+    path('summary_remove_all/<slug>/', summary_remove_all, name='summary_remove_all'),
 ]
 
 if settings.DEBUG:
     import debug_toolbar
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-    #jakby cos sie ze staticem tez psulo to zamien MEDIA_ROOT i MEDIA_URL na STATIC w newline i bd gituwa

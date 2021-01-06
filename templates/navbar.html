@@ -1,76 +1,70 @@
 {% load cart_template_tags %}
+<nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand waves-effect" href="/shop/">
+      <strong class="blue-text">buggy_shop</strong>
+    </a>
 
-<!-- Navbar -->
-  <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
-    <div class="container">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-      <!-- Brand -->
-      <a class="navbar-brand waves-effect" href="/shop/">
-        <strong class="blue-text">buggy_shop</strong>
-      </a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-      <!-- Collapse -->
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item" style="display: none">
+          <a class="nav-link waves-effect" href="/checkout">Checkout</a>
+        </li>
+      </ul>
 
-      <!-- Links -->
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-        <!-- Left -->
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item" style="display: none">
-            <a class="nav-link waves-effect" href="/checkout">Checkout</a>
-          </li>
-        </ul>
-
-        <!-- Right -->
-        <ul class="navbar-nav nav-flex-icons">
-          {% if user.is_authenticated %}
-          <li class="nav-item">
-            <div class="nav-link">
-              <span class="clearfix d-none d-sm-inline-block mr-2"> Logged as: {{request.user.username}} </span>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a href="{% url 'order-summary' %}"class="nav-link waves-effect">
-              <span class="badge red z-depth-1 mr-1"> {{ request.user|cart_item_count }} </span>
-              <i class="fas fa-shopping-cart"></i>
-              <span class="clearfix d-none d-sm-inline-block"> Cart </span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link waves-effect" href="{% url 'account_logout' %}">
-              <span class="clearfix d-none d-sm-inline-block"> Log Out </span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link waves-effect" href="/support">
-              <span class="clearfix d-none d-sm-inline-block"> Support </span>
-            </a>
-          </li>
-          {% else %}
-          <li class="nav-item">
-            <a class="nav-link waves-effect" href="{% url 'account_login' %}">
-              <span class="clearfix d-none d-sm-inline-block"> Login </span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link waves-effect" href="{% url 'account_signup' %}">
-              <span class="clearfix d-none d-sm-inline-block"> Sign Up </span>
-            </a>
-          </li>
-          {% endif %}
-
-          <!-- Brand -->
-          <li><a class="navbar-brand waves-effect" href="/">
-          <strong class="black-text ml-2">buggy_site</strong>
-          </a></li>
-        </ul>
-
-      </div>
-
+      <ul class="navbar-nav nav-flex-icons">
+        {% if user.is_authenticated %}
+        <li class="nav-item">
+          <div class="nav-link">
+            <span class="clearfix d-none d-sm-inline-block mr-2"> Logged as: {{request.user.username}} </span>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a href="{% url 'order-summary' %}"class="nav-link waves-effect">
+            <span class="badge red z-depth-1 mr-1"> {{ request.user|cart_item_count }} </span>
+            <i class="fas fa-shopping-cart"></i>
+            <span class="clearfix d-none d-sm-inline-block"> Cart </span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link waves-effect" href="{% url 'account_logout' %}">
+            <span class="clearfix d-none d-sm-inline-block"> Log Out </span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link waves-effect" href="/support">
+            <span class="clearfix d-none d-sm-inline-block"> Support </span>
+          </a>
+        </li>
+        {% else %}
+        <li class="nav-item">
+          <a class="nav-link waves-effect" href="{% url 'account_login' %}">
+            <span class="clearfix d-none d-sm-inline-block"> Login </span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link waves-effect" href="{% url 'account_signup' %}">
+            <span class="clearfix d-none d-sm-inline-block"> Sign Up </span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link waves-effect" href="/support">
+            <span class="clearfix d-none d-sm-inline-block"> Support </span>
+          </a>
+        </li>
+        {% endif %}
+        <li>
+          <a class="navbar-brand waves-effect" href="/">
+            <strong class="black-text ml-2">buggy_site</strong>
+          </a>
+        </li>
+      </ul>
     </div>
-  </nav>
-  <!-- Navbar -->
+  </div>
+</nav>
