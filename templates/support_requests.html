@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+{% for message in object_list %}
+<div>
+Email: {{ message.email }}<br>
+Name: {{ message.user }}<br>
+Message: {{message.message|safe}}<br>
+<hr></div>
+{% endfor %}
+
+{% endblock %}

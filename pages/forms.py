@@ -22,3 +22,4 @@ class QueryForm(forms.Form):
 class SupportForm(forms.Form):
     name = forms.CharField()
     message = forms.CharField()
+    email = forms.CharField()

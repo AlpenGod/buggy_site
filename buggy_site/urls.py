@@ -30,6 +30,7 @@ from pages.views import (
     summary_remove,
     summary_add,
     summary_remove_all,
+    support_requests,
     )
 
 urlpatterns = [
@@ -38,6 +39,7 @@ urlpatterns = [
     path('shop/', HomeView.as_view(),name='shop'),
     path('checkout/', CheckoutView.as_view(), name='checkout'),
     path('order-summary/', OrderSummaryView.as_view(), name='order-summary'),
+    path('support_requests/', support_requests.as_view(), name='support_requests'),
     path('product/<slug>/', ItemDetailView.as_view(), name='product'),
     path('accounts/', include('allauth.urls')),
     path('support/', support_view.as_view(), name='support'),

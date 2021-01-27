@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Item, OrderItem, Order, BillingAddress
+from .models import Item, OrderItem, Order, BillingAddress, Message
 from django.views.generic import ListView, DetailView, View
 from django.shortcuts import redirect
 from django.utils import timezone
@@ -23,6 +23,11 @@ from xml.etree.ElementTree import parse
 # '/' buggy_site view
 def home_view(request):
     return render(request, "index.html",{})
+
+# '/support_requests' buggy_site view
+class support_requests(ListView):
+    model = Message
+    template_name = "support_requests.html"
 
 # '/support' template view
 class support_view(View):
@@ -68,6 +73,13 @@ class support_view(View):
                 output = "Empty"
             #harmful! .cleaned_data missing
             message = form.data['message']
+            email = form.data['email']
+            message_model = Message(
+                user=request.user,
+                email = email,
+                message = message,
+                )
+            message_model.save()
             context = {
                 'file' : output,
                 'message' : message,
