@@ -15,6 +15,7 @@ Including another URLconf
 """
 
 from django.views.static import serve
+from django.conf.urls import url
 from django.conf import settings
 from django.conf.urls.static import static
 from django.conf.urls import include
@@ -47,6 +48,8 @@ urlpatterns = [
     path('search/', search_view, name='search'),
     path('summary_remove/<slug>/', summary_remove, name='summary_remove'),
     path('summary_add/<slug>/', summary_add, name='summary_add'),
+    url(r'^media/(?P<path>.*)$', serve,{'document_root': settings.MEDIA_ROOT}), 
+    url(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}), 
     path('summary_remove_all/<slug>/', summary_remove_all, name='summary_remove_all'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
