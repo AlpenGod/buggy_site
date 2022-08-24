@@ -124,12 +124,12 @@ USE_L10N = True
 
 USE_TZ = True
 
-STATICFILES_DIRS = (str(BASE_DIR.joinpath('static')),)
-STATIC_URL = 'static/'
-STATICFILES_DIRS = [
-    'D:/home/site/wwwroot/static',
-    os.path.join(BASE_DIR,'static'),
-]
+STATIC_URL = '/static/'
+
+if DEBUG:
+    STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+else:
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
