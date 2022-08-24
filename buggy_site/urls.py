@@ -48,7 +48,7 @@ urlpatterns = [
     path('summary_remove/<slug>/', summary_remove, name='summary_remove'),
     path('summary_add/<slug>/', summary_add, name='summary_add'),
     path('summary_remove_all/<slug>/', summary_remove_all, name='summary_remove_all'),
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 if settings.DEBUG:
     import debug_toolbar
