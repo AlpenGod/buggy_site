@@ -32,6 +32,16 @@ jobs:
         
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
       
+      - name: Perform SAST Bandit scan.
+        run: docker run --rm -v $(pwd):/src hysnsec/bandit -r /src -f json -o /src/bandit-output.json
+        continue-on-error: true
+        
+      - uses: actions/upload-artifact@v2
+        with:
+          name: Bandit
+          path: bandit-output.json
+        if: always()
+      
       - name: Upload artifact for deployment jobs
         uses: actions/upload-artifact@v2
         with:
