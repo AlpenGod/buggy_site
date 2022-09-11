@@ -33,14 +33,16 @@ jobs:
   test:
       runs-on: ubuntu-latest
       needs: build
+      
       steps:
         - uses: actions/checkout@v2
+        
         - name: Perform SAST Bandit scan.
           run: docker run --rm -v $(pwd):/src hysnsec/bandit -r /src -f json -o /src/bandit-output.json
           continue-on-error: true
-        
-        - uses: actions/upload-artifact@v2
+
         - name: Upload SAST Bandit artifact
+          uses: actions/upload-artifact@v2
           with:
             name: Bandit
             path: bandit-output.json
@@ -54,16 +56,16 @@ jobs:
               . 
               !venv/
         
-#        - name: Perform SCA Safety scan.
-#          run: docker run --rm -v $(pwd):/src hysnsec/safety check -r requirements.txt --json > safety-output.json
-#          continue-on-error: true
+        - name: Perform SCA Safety scan.
+          run: docker run --rm -v $(pwd):/src hysnsec/safety check -r requirements.txt --json > safety-output.json
+          continue-on-error: true
 
-#        - name: Upload SCA Safety artifact
-#          uses: actions/upload-artifact@v2
-#          with:
-#            name: Safety
-#            path: safety-output.json
-#          if: always()
+        - name: Upload SCA Safety artifact
+          uses: actions/upload-artifact@v2
+          with:
+            name: Safety
+            path: safety-output.json
+          if: always()
               
   deploy:
     runs-on: ubuntu-latest
@@ -87,12 +89,12 @@ jobs:
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_F5311CEC26224FC0B355B9AEED4D08BD }}
           
-      #- name: Get deployment URL
-      #  id: deployment
-      #  uses: dorshinar/get-deployment-url@master
-      #  timeout-minutes: 5
-      #  with:
-      #    token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Get deployment URL
+        id: deployment
+        uses: dorshinar/get-deployment-url@master
+        timeout-minutes: 5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
           
-      #- name: Print deployment URL
-      #  run: echo ${{ steps.deployment.outputs.deployment }}
+      - name: Print deployment URL
+        run: echo ${{ steps.deployment.outputs.deployment }}
