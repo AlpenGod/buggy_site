@@ -92,4 +92,6 @@ jobs:
         timeout-minutes: 5
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-      - run: echo ${{ steps.deployment.outputs.deployment }}
+          
+      - name: Print deployment URL
+        run: echo ${{ steps.deployment.outputs.deployment }}
