@@ -66,9 +66,8 @@ jobs:
             node-version: '10.x'
 
         - name: Install Node modules
-          run: |
-            npm install
-            npm init
+          run: 
+            npm install snyk -g
 
         - name: Perform SCA Snyk scan.
           run: snyk test
