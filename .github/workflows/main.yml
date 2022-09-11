@@ -102,3 +102,15 @@ jobs:
           app-name: 'buggy-app'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_F5311CEC26224FC0B355B9AEED4D08BD }}
+
+      - name: Perform smoke DAST ZAP scan
+      - run: |
+           docker pull owasp/zap2docker-stable:2.10.0
+           docker run --user root --rm -v $(pwd):/zap/wrk:rw -w /zap owasp/zap2docker-stable:2.10.0 zap-baseline.py -t ${{ secrets.PROD_URL }} -x zap-output.xml
+      
+      - name: Upload DAST ZAP artifact.     
+      - uses: actions/upload-artifact@v2
+        with:
+          name: ZAP Scan
+          path: zap-output.xml
+        if: always()
