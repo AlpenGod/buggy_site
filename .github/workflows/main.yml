@@ -69,17 +69,17 @@ jobs:
           run: npm install
 
         - name: Perform SCA Snyk scan.
-          run: snyk test --json > snyk-results.json
+          run: snyk test
           env:
             SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
           continue-on-error: true
 
-        - name: Upload SCA Snyk arfifact.
-          uses: actions/upload-artifact@v2
-          with:
-            name: Snyk
-            path: snyk-results.json
-          if: always()
+       # - name: Upload SCA Snyk arfifact.
+       #   uses: actions/upload-artifact@v2
+       #   with:
+       #     name: Snyk
+       #     path: snyk-results.json
+       #   if: always()
               
   deploy:
     runs-on: ubuntu-latest
