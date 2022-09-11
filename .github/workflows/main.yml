@@ -58,7 +58,8 @@ jobs:
           run: docker run --rm -v $(pwd):/src hysnsec/safety check -r requirements.txt --json > safety-output.json
           continue-on-error: true
 
-        - uses: actions/upload-artifact@v2
+        - name: Upload SCA Safety artifact
+          uses: actions/upload-artifact@v2
           with:
             name: Safety
             path: safety-output.json
