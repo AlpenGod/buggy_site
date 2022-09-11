@@ -54,16 +54,16 @@ jobs:
               . 
               !venv/
         
-        - name: Perform SCA Safety scan.
-          run: docker run --rm -v $(pwd):/src hysnsec/safety check -r requirements.txt --json > safety-output.json
-          continue-on-error: true
+#        - name: Perform SCA Safety scan.
+#          run: docker run --rm -v $(pwd):/src hysnsec/safety check -r requirements.txt --json > safety-output.json
+#          continue-on-error: true
 
-        - name: Upload SCA Safety artifact
-          uses: actions/upload-artifact@v2
-          with:
-            name: Safety
-            path: safety-output.json
-          if: always()
+#        - name: Upload SCA Safety artifact
+#          uses: actions/upload-artifact@v2
+#          with:
+#            name: Safety
+#            path: safety-output.json
+#          if: always()
               
   deploy:
     runs-on: ubuntu-latest
