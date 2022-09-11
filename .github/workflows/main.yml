@@ -73,6 +73,8 @@ jobs:
           uses: snyk/actions/python@master
           env:
             SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+          with:
+            json: true 
           continue-on-error: true
 
        # - name: Upload SCA Snyk arfifact.
