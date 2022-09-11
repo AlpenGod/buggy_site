@@ -87,12 +87,12 @@ jobs:
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_F5311CEC26224FC0B355B9AEED4D08BD }}
           
-      - name: Get deployment URL
-        id: deployment
-        uses: dorshinar/get-deployment-url@master
-        timeout-minutes: 5
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+      #- name: Get deployment URL
+      #  id: deployment
+      #  uses: dorshinar/get-deployment-url@master
+      #  timeout-minutes: 5
+      #  with:
+      #    token: ${{ secrets.GITHUB_TOKEN }}
           
-      - name: Print deployment URL
-        run: echo ${{ steps.deployment.outputs.deployment }}
+      #- name: Print deployment URL
+      #  run: echo ${{ steps.deployment.outputs.deployment }}
