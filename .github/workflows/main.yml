@@ -56,21 +56,21 @@ jobs:
               . 
               !venv/
           
-        - uses: snyk/actions/setup@master
-        - uses: actions/setup-go@v1
-          with:
-            go-version: "1.13"
+        #- uses: snyk/actions/setup@master
+        #- uses: actions/setup-go@v1
+        #  with:
+        #    go-version: "1.13"
 
-        - uses: actions/setup-node@v2
-          with:
-            node-version: '10.x'
+        #- uses: actions/setup-node@v2
+        #  with:
+        #    node-version: '10.x'
 
-        - name: Install Node modules
-          run: 
-            npm install snyk -g
+        #- name: Install Node modules
+        #  run: 
+        #    npm install snyk -g
 
         - name: Perform SCA Snyk scan.
-          run: snyk test
+          uses: snyk/actions/python@master
           env:
             SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
           continue-on-error: true
