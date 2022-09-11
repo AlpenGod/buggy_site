@@ -55,16 +55,30 @@ jobs:
             path: |
               . 
               !venv/
-        
-        - name: Perform SCA Safety scan.
-          run: docker run --rm -v $(pwd):/src hysnsec/safety check -r requirements.txt --json > safety-output.json
+          
+        - uses: snyk/actions/setup@master
+        - uses: actions/setup-go@v1
+          with:
+            go-version: "1.13"
+
+        - uses: actions/setup-node@v2
+          with:
+            node-version: '10.x'
+
+        - name: Install Node modules
+          run: npm install
+
+        - name: Perform SCA Snyk scan.
+          run: snyk test --json > snyk-results.json
+          env:
+            SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
           continue-on-error: true
 
-        - name: Upload SCA Safety artifact
+        - name: Upload SCA Snyk arfifact.
           uses: actions/upload-artifact@v2
           with:
-            name: Safety
-            path: safety-output.json
+            name: Snyk
+            path: snyk-results.json
           if: always()
               
   deploy:
@@ -88,13 +102,3 @@ jobs:
           app-name: 'buggy-app'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_F5311CEC26224FC0B355B9AEED4D08BD }}
-          
-      - name: Get deployment URL
-        id: deployment
-        uses: dorshinar/get-deployment-url@master
-        timeout-minutes: 5
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          
-      - name: Print deployment URL
-        run: echo ${{ steps.deployment.outputs.deployment }}
