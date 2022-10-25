@@ -40,7 +40,9 @@ jobs:
         - uses: actions/checkout@v2
         
         - name: Perform SAST Bandit scan.
-          run: docker run --rm -v $(pwd):/src hysnsec/bandit -r /src -f json -o /src/bandit-output.json
+          run: |
+            docker pull hysnsec/bandit
+            docker run --rm -v $(pwd):/src hysnsec/bandit -r /src -f json -o /src/bandit-output.json
           continue-on-error: true
 
         - name: Upload SAST Bandit artifact
