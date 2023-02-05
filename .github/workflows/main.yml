@@ -58,14 +58,14 @@ jobs:
           run: |
             python3 upload-results.py --host ${{ secrets.DOJO_HOST }} --api_key ${{ secrets.DOJO_API_TOKEN }} --engagement_id 1 --product_id 1 --lead_id 1 --environment "Production" --result_file bandit-output.json --scanner "Bandit Scan"
 
-        - name: Upload artifact for deployment jobs
-          continue-on-error: true
-          uses: actions/upload-artifact@v2
-          with:
-            name: python-app
-            path: |
-              . 
-              !venv/
+       # - name: Upload artifact for deployment jobs
+       #   continue-on-error: true
+       #   uses: actions/upload-artifact@v2
+       #   with:
+       #     name: python-app
+       #     path: |
+       #       . 
+       #       !venv/
 
         - name: Perform SCA Snyk scan.
           uses: snyk/actions/python@master
