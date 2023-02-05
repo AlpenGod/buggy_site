@@ -12,7 +12,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  CI:
+  SCA:
     runs-on: ubuntu-latest
 
     steps:
