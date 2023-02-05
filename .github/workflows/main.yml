@@ -22,22 +22,14 @@ jobs:
         uses: actions/setup-python@v1
         with:
           python-version: '3.8'
-
-      - name: Create and start virtual environment
-        run: |
-          python -m venv venv
-          source venv/bin/activate
       
       - name: Install dependencies
         run: | 
           pip install -r requirements.txt
-          pip install requests #required to use upload results script
-        
 
       - name: Perform SCA Snyk scan.
         uses: snyk/actions/python@master
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
-          json: true 
-        continue-on-error: true
+          json: true
