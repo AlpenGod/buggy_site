@@ -21,4 +21,4 @@ jobs:
       - name: Perform SCA Snyk scan.
         run: |
           docker pull snyk/snyk:python-3.8
-          docker run --rm --env SNYK_TOKEN=${{ secrets.SNYK_TOKEN }} --env COMMAND="pip install -r /app/requirements.txt" -v $PWD:/app snyk/snyk:python-3.8 snyk test --file=/app/requirements.txt
+          docker run --rm --env SNYK_TOKEN=${{ secrets.SNYK_TOKEN }} --env COMMAND="pip install -r /app/requirements.txt" -v $PWD:/buggy-site snyk/snyk:python-3.8 snyk test --file=/buggy-site/requirements.txt
