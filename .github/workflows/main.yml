@@ -18,19 +18,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Set up Python version
-        uses: actions/setup-python@v1
-        with:
-          python-version: '3.8'
-      
-      - name: Install dependencies
-        run: | 
-          pip install --upgrade pip
-          pip install -r requirements.txt
-
       - name: Perform SCA Snyk scan.
-        uses: snyk/actions/python@master
-        env:
-          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-        with:
-          json: true
+        run: |
+          docker run --rm -it --env {{ secrets.SNYK_TOKEN }} --env COMMAND="pip install -r requirements.txt" -v $(PWD):/app snyk/snyk:python snyk test --file=requirements.txt
