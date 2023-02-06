@@ -8,6 +8,7 @@ on:
   push:
     branches:
       - master
+      - feature/*
   pull_request:
     types: opened
   workflow_dispatch:
