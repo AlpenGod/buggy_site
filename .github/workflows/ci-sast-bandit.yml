@@ -27,8 +27,8 @@ jobs:
         
       - name: Perform SAST Bandit scan.
         run: |
-          docker pull hysnsec/bandit
-          docker run --rm -v $(pwd):/src hysnsec/bandit -r /src -f html -o /src/bandit-output.html
+          pip install bandit
+          python -m bandit -r .
           
       - name: Upload SAST Bandit artifact
         uses: actions/upload-artifact@v2
