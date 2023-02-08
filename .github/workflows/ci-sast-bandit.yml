@@ -37,4 +37,11 @@ jobs:
       - name: Perform SAST Bandit scan.
         run: |
           docker pull hysnsec/bandit
-          docker run --rm -v $(pwd):/src hysnsec/bandit -r /src -f json -o /src/bandit-output.json
+          docker run --rm -v $(pwd):/src hysnsec/bandit -r /src -f html -o /src/bandit-output.html
+          
+      - name: Upload SAST Bandit artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: Bandit
+          path: bandit-output.html
+        if: always()
