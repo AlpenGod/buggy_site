@@ -31,4 +31,4 @@ jobs:
 
       - name: ZAP Scan
         run: |
-          docker run -v $GITHUB_WORKSPACE:${{ vars.volume }} -t owasp/zap2docker-stable zap.sh -cmd -autorun ${{ vars.volume }}/config/conf.yaml
+          docker run -v $GITHUB_WORKSPACE:${{ vars.volume }} owasp/zap2docker-stable zap.sh -cmd -autorun ${{ vars.volume }}/config/conf.yaml
