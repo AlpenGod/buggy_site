@@ -68,7 +68,7 @@ jobs:
 - parameters:
     context: "<url>"
     user: "test"
-    url: ""
+    url: "<url>"
     maxDuration: 0
     maxDepth: 0
     maxChildren: 0
