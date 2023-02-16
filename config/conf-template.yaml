@@ -1,0 +1,166 @@
+---
+env:
+  contexts:
+  - name: "<url>"
+    urls:
+    - "<url>"
+    includePaths:
+    - "<url>.*"
+    authentication:
+      method: "form"
+      parameters:
+        loginRequestBody: "login={%username%}&password={%password%}"
+        loginRequestUrl: "<url>/accounts/login/"
+        loginPageUrl: "<url>/accounts/login/"
+      verification:
+        method: "response"
+        loggedInRegex: "Log Out"
+        loggedOutRegex: "Login"
+        pollFrequency: 60
+        pollUnits: "requests"
+        pollUrl: ""
+        pollPostData: ""
+    sessionManagement:
+      method: "cookie"
+      parameters: {}
+    technology:
+      exclude:
+      - "CouchDB"
+      - "JSP/Servlet"
+      - "Ruby"
+      - "SVN"
+      - "C"
+      - "Firebird"
+      - "HypersonicSQL"
+      - "IBM DB2"
+      - "Microsoft Access"
+      - "Microsoft SQL Server"
+      - "MongoDB"
+      - "MySQL"
+      - "Oracle"
+      - "PostgreSQL"
+      - "SAP MaxDB"
+      - "Sybase"
+      - "ASP"
+      - "Java"
+      - "PHP"
+      - "MacOS"
+      - "Windows"
+      - "LDAP"
+    users:
+    - name: "test"
+      credentials:
+        password: "<pass>"
+        username: "<user>"
+  parameters:
+    failOnError: true
+    failOnWarning: false
+    progressToStdout: true
+  vars: {}
+jobs:
+- parameters:
+    scanOnlyInScope: true
+    enableTags: false
+    disableAllRules: false
+  rules: []
+  name: "passiveScan-config"
+  type: "passiveScan-config"
+- parameters:
+    context: "<url>"
+    user: "test"
+    url: ""
+    maxDuration: 0
+    maxDepth: 0
+    maxChildren: 0
+  name: "spider"
+  type: "spider"
+- parameters: {}
+  name: "passiveScan-wait"
+  type: "passiveScan-wait"
+- parameters:
+    context: "<url>"
+    user: "test"
+    policy: ""
+    maxRuleDurationInMins: 0
+    maxScanDurationInMins: 0
+  policyDefinition:
+    defaultStrength: "medium"
+    defaultThreshold: "medium"
+    rules:
+    - id: 90029
+      name: "SOAP XML Injection"
+      threshold: "off"
+      strength: "default"
+    - id: 40026
+      name: "Cross Site Scripting (DOM Based)"
+      threshold: "off"
+      strength: "default"
+    - id: 90026
+      name: "SOAP Action Spoofing"
+      threshold: "off"
+      strength: "default"
+    - id: 50000
+      name: "Script Active Scan Rules"
+      threshold: "off"
+      strength: "default"
+    - id: 40020
+      name: "SQL Injection - Hypersonic SQL"
+      threshold: "off"
+      strength: "default"
+    - id: 40027
+      name: "SQL Injection - MsSQL"
+      threshold: "off"
+      strength: "default"
+    - id: 40019
+      name: "SQL Injection - MySQL"
+      threshold: "off"
+      strength: "default"
+    - id: 40021
+      name: "SQL Injection - Oracle"
+      threshold: "off"
+      strength: "default"
+    - id: 40022
+      name: "SQL Injection - PostgreSQL"
+      threshold: "off"
+      strength: "default"
+    - id: 10104
+      name: "User Agent Fuzzer"
+      threshold: "off"
+      strength: "default"
+    - id: 20018
+      name: "Remote Code Execution - CVE-2012-1823"
+      threshold: "off"
+      strength: "default"
+    - id: 20017
+      name: "Source Code Disclosure - CVE-2012-1823"
+      threshold: "off"
+      strength: "default"
+    - id: 40018
+      name: "SQL Injection"
+      threshold: "off"
+      strength: "default"
+    - id: 90024
+      name: "Generic Padding Oracle"
+      threshold: "off"
+      strength: "default"
+  name: "activeScan"
+  type: "activeScan"
+- parameters:
+    template: "traditional-json"
+    reportDir: "<output>"
+    reportFile: "output.json"
+    reportTitle: "ZAP Scanning Report"
+    reportDescription: ""
+    displayReport: false
+  risks:
+  - "medium"
+  - "high"
+  confidences:
+  - "falsepositive"
+  - "low"
+  - "medium"
+  - "high"
+  - "confirmed"
+  name: "report"
+  type: "report"
+

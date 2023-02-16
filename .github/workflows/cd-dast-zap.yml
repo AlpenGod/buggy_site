@@ -17,10 +17,18 @@ jobs:
   CD:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
+
+      - run: |
+          sed 's/<pass>/'${{ secrets.BS_PASS }}'/g' $GITHUB_WORKSPACE/config/conf-template.yaml > $GITHUB_WORKSPACE/config/conf.yaml
+          sed 's/<username>/'${{ secrets.BS_PASS }}'/g' $GITHUB_WORKSPACE/config/conf.yaml
+          sed 's/<output>/'$GITHUB_WORKSPACE/config'/g' $GITHUB_WORKSPACE/config/conf.yaml
+          sed 's/<url>/'$URL'/g' $GITHUB_WORKSPACE/config/conf.yaml
+          cat $GITHUB_WORKSPACE/config/conf.yaml
+
       - name: ZAP Scan
         uses: zaproxy/action-full-scan@v0.4.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           docker_name: 'owasp/zap2docker-stable'
           target: 'https://bugysite.azurewebsites.net/'
-        
