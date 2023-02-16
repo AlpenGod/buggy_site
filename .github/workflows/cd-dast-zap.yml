@@ -17,11 +17,10 @@ jobs:
   CD:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/setup-python@v4
+      - name: ZAP Scan
+        uses: zaproxy/action-full-scan@v0.4.0
         with:
-          python-version: '3.9'
-      - run: |
-          pip install wapiti3
-          wapiti -u https://bugysite.azurewebsites.net/ -m "common, csrf, htaccess, timesql, xxe" -f json -o output.json
-          cat output.json | jq .vulnerabilities
+          token: ${{ secrets.GITHUB_TOKEN }}
+          docker_name: 'owasp/zap2docker-stable'
+          target: 'https://bugysite.azurewebsites.net/'
         
