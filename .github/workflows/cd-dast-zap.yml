@@ -23,7 +23,7 @@ jobs:
           echo "przed"
           sed 's/<pass>/'${{ secrets.BS_PASS }}'/g' $GITHUB_WORKSPACE/config/conf-template.yaml > $GITHUB_WORKSPACE/config/conf.yaml
           echo "haslo"
-          sed 's/<username>/'${{ secrets.BS_USER }}'/g' $GITHUB_WORKSPACE/config/conf.yaml
+          sed 's/<user>/'${{ secrets.BS_USER }}'/g' $GITHUB_WORKSPACE/config/conf.yaml
           echo "username"
           sed 's/<output>/'$GITHUB_WORKSPACE/config'/g' $GITHUB_WORKSPACE/config/conf.yaml
           echo "url"
