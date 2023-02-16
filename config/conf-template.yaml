@@ -10,8 +10,8 @@ env:
       method: "form"
       parameters:
         loginRequestBody: "login={%username%}&password={%password%}"
-        loginRequestUrl: "<url>/accounts/login/"
-        loginPageUrl: "<url>/accounts/login/"
+        loginRequestUrl: "<url>accounts/login/"
+        loginPageUrl: "<url>accounts/login/"
       verification:
         method: "response"
         loggedInRegex: "Log Out"
