@@ -27,6 +27,7 @@ jobs:
           echo "username"
           sed 's/<output>/'$GITHUB_WORKSPACE/config'/g' $GITHUB_WORKSPACE/config/conf.yaml
           echo "url"
+          echo ${{ vars.URL }}
           sed 's/<url>/'${{ vars.URL }}'/g' $GITHUB_WORKSPACE/config/conf.yaml
           echo "cat"
           cat $GITHUB_WORKSPACE/config/conf.yaml
