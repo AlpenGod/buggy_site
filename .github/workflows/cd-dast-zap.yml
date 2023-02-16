@@ -24,10 +24,10 @@ jobs:
           sed 's/<pass>/'${{ secrets.BS_PASS }}'/g' $GITHUB_WORKSPACE/config/conf-template.yaml > $GITHUB_WORKSPACE/config/conf.yaml
           echo "haslo"
           sed 's/<user>/'${{ secrets.BS_USER }}'/g' $GITHUB_WORKSPACE/config/conf.yaml
-          cat $GITHUB_WORKSPACE
+          echo $GITHUB_WORKSPACE
           echo "username"
           export pth=$GITHUB_WORKSPACE/config
-          cat $pth
+          echo $pth
           sed 's/<output>/'$pth'/g' $GITHUB_WORKSPACE/config/conf.yaml
           echo "url"
           echo ${{ vars.URL }}
