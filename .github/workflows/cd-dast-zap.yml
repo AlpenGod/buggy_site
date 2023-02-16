@@ -25,7 +25,7 @@ jobs:
           echo "haslo"
           sed 's/<user>/'${{ secrets.BS_USER }}'/g' $GITHUB_WORKSPACE/config/conf.yaml
           echo "username"
-          sed 's/<output>/'$GITHUB_WORKSPACE'\/config/g' $GITHUB_WORKSPACE/config/conf.yaml
+          sed 's/<output>/'$GITHUB_WORKSPACE'//config/g' $GITHUB_WORKSPACE/config/conf.yaml
           echo "url"
           echo ${{ vars.URL }}
           sed 's/<url>/'${{ vars.URL }}'/g' $GITHUB_WORKSPACE/config/conf.yaml
