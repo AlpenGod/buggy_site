@@ -30,7 +30,7 @@ jobs:
 
       - name: ZAP test
         run: |
-          docker run -v $(pwd):/zap/wrk/:rw -t owasp/zap2docker-stable touch /zap/wrk/test.txt
+          sudo docker run -v $(pwd):/zap/wrk/:rw -t owasp/zap2docker-stable touch /zap/wrk/test.txt
           ls
 
       - name: ZAP Scan
