@@ -30,6 +30,7 @@ jobs:
 
       - name: ZAP test
         run: |
+          ls -la $GITHUB_WORKSPACE
           sudo docker run --privileged=true -v $GITHUB_WORKSPACE:/zap/wrk/:rw -t owasp/zap2docker-stable touch /zap/wrk/test.txt
           ls
 
