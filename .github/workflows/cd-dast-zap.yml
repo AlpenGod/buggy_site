@@ -28,7 +28,7 @@ jobs:
           echo "username"
           export pth=$GITHUB_WORKSPACE/config
           echo $pth
-          sed 's/<output>/'$pth'/g' $GITHUB_WORKSPACE/config/conf.yaml
+          sed 's!<output!'$pth'!g' $GITHUB_WORKSPACE/config/conf.yaml
           echo "url"
           echo ${{ vars.URL }}
           sed 's/<url>/'${{ vars.URL }}'/g' $GITHUB_WORKSPACE/config/conf.yaml
