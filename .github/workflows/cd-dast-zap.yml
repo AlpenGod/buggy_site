@@ -28,7 +28,12 @@ jobs:
           echo "=================================================================================================="
           cat $GITHUB_WORKSPACE/config/conf.yaml
 
+      - name: ZAP test
+        run: |
+          docker run -v $(pwd):/zap/wrk/:rw -t owasp/zap2docker-stable touch /zap/wrk/test.txt
+          ls
+
       - name: ZAP Scan
         run: |
-          docker run -v $(pwd):/zap/wrk/:rw owasp/zap2docker-stable zap.sh -cmd -autorun /zap/wrk/config/conf.yaml
+          docker run -v $(pwd):/zap/wrk/:rw -t owasp/zap2docker-stable zap.sh -cmd -autorun /zap/wrk/config/conf.yaml
           if cat output.json | jq '.site[].alerts[] | "\(.riskdesc) - \(.name)"' | grep '"High'; then exit 1; else exit 0; fi
