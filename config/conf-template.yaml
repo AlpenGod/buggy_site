@@ -147,7 +147,7 @@ jobs:
   type: "activeScan"
 - parameters:
     template: "traditional-json"
-    reportDir: "<output>"
+    reportDir: "/zap/wrk/"
     reportFile: "output.json"
     reportTitle: "ZAP Scanning Report"
     reportDescription: ""
