@@ -17,10 +17,6 @@ jobs:
   CD:
     runs-on: ubuntu-latest
     steps:
-      - name: ZAP Scan
-        uses: zaproxy/action-baseline@v0.7.0
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          docker_name: 'owasp/zap2docker-stable'
-          target: 'https://bugysite.azurewebsites.net/'
+      - run: |
+          docker run --rm sullo/nikto -h https://bugysite.azurewebsites.net/
         
