@@ -30,8 +30,5 @@ jobs:
           cat $GITHUB_WORKSPACE/config/conf.yaml
 
       - name: ZAP Scan
-        uses: zaproxy/action-full-scan@v0.4.0
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          docker_name: 'owasp/zap2docker-stable'
-          target: ${{ vars.URL }}
+        run: |
+          docker run -v $GITHUB_WORKSPACE:${{ vars.volume }} -t owasp/zap2docker-stable zap.sh -cmd -autorun ${{ vars.volume }}/config/conf.yaml
