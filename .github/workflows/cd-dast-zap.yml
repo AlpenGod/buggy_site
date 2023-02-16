@@ -27,7 +27,7 @@ jobs:
           echo "username"
           sed 's/<output>/'$GITHUB_WORKSPACE/config'/g' $GITHUB_WORKSPACE/config/conf.yaml
           echo "url"
-          sed 's/<url>/'$URL'/g' $GITHUB_WORKSPACE/config/conf.yaml
+          sed 's/<url>/'${{ vars.URL }}'/g' $GITHUB_WORKSPACE/config/conf.yaml
           echo "cat"
           cat $GITHUB_WORKSPACE/config/conf.yaml
 
@@ -36,4 +36,4 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           docker_name: 'owasp/zap2docker-stable'
-          target: $URL
+          target: ${{ vars.URL }}
