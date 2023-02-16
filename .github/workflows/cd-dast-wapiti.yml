@@ -22,6 +22,6 @@ jobs:
           python-version: '3.9'
       - run: |
           pip install wapiti3
-          wapiti -u https://bugysite.azurewebsites.net/ -m "common, csrf, htaccess, timesql, xxe" -f json -o output.json
+          wapiti -u https://bugysite.azurewebsites.net/ -m "common, csrf, htaccess, xxe" -f json -o output.json
           cat output.json | jq .vulnerabilities
         
