@@ -27,6 +27,14 @@ jobs:
           echo "=================================================FINAL================================================="
           echo "=================================================================================================="
           cat $GITHUB_WORKSPACE/config/conf.yaml
+          
+      - name: ZAP Scan
+        uses: zaproxy/action-full-scan@v0.4.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          docker_name: 'owasp/zap2docker-stable'
+          target: ${{ vars.URL }}
+          cmd_options: '-cmd -autorun $GITHUB_WORKSPACE/config/conf.yaml'
 
       - name: ZAP test
         run: |
