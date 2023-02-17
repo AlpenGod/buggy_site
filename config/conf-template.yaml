@@ -82,7 +82,7 @@ jobs:
     maxRuleDurationInMins: 0
     maxScanDurationInMins: 0
   policyDefinition:
-    defaultStrength: "medium"
+    defaultStrength: "low"
     defaultThreshold: "medium"
     rules:
     - id: 90029
