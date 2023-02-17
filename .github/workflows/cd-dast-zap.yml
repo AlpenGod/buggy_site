@@ -23,21 +23,8 @@ jobs:
           sed 's/<pass>/'${{ secrets.BS_PASS }}'/g' $GITHUB_WORKSPACE/config/conf-template.yaml > $GITHUB_WORKSPACE/config/conf.yaml
           sed -i 's/<user>/'${{ secrets.BS_USER }}'/g' $GITHUB_WORKSPACE/config/conf.yaml
           sed -i 's!<url>!'${{ vars.URL }}'!g' $GITHUB_WORKSPACE/config/conf.yaml
-          echo "======================================================================================================"
-          echo "=================================================FINAL================================================="
-          echo "=================================================================================================="
-          cat $GITHUB_WORKSPACE/config/conf.yaml
-
-      - name: ZAP test
-        run: |
-          whoami
-          sudo su
-          whoami
-          ls -la $GITHUB_WORKSPACE
-          docker run -v $(pwd):/zap/wrk/:rw --user root -t owasp/zap2docker-weekly touch /zap/wrk/config/teest.txt
-          ls
 
       - name: ZAP Scan
         run: |
-          docker run -v $(pwd):/zap/wrk/:rw -t owasp/zap2docker-stable zap.sh -cmd -autorun /zap/wrk/config/conf.yaml
+          docker run -v $GITHUB_WORKSPACE:/zap/wrk/:rw --user root owasp/zap2docker-stable zap.sh -cmd -autorun /zap/wrk/config/conf.yaml
           if cat output.json | jq '.site[].alerts[] | "\(.riskdesc) - \(.name)"' | grep '"High'; then exit 1; else exit 0; fi
