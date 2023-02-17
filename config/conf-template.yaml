@@ -46,7 +46,6 @@ env:
       - "PHP"
       - "MacOS"
       - "Windows"
-      - "LDAP"
     users:
     - name: "test"
       credentials:
