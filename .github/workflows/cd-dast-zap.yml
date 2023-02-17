@@ -26,5 +26,5 @@ jobs:
 
       - name: ZAP Scan
         run: |
-          docker run -v $GITHUB_WORKSPACE:/zap/wrk/:rw --user root owasp/zap2docker-weekly zap.sh -cmd -autorun /zap/wrk/config/conf.yaml
+          docker run -v $GITHUB_WORKSPACE:/zap/wrk/:rw --user root owasp/zap2docker-stable zap.sh -cmd -autorun /zap/wrk/config/conf.yaml
           if cat output.json | jq '.site[].alerts[] | "\(.riskdesc) - \(.name)"' | grep '"High'; then exit 1; else exit 0; fi
