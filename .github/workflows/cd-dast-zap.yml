@@ -34,7 +34,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           docker_name: 'owasp/zap2docker-stable'
           target: ${{ vars.URL }}
-          cmd_options: '-cmd -autorun $GITHUB_WORKSPACE/config/conf.yaml'
+          cmd_options: '-cmd -autorun /zap/wrk/config/conf.yaml'
 
       - name: ZAP test
         run: |
