@@ -34,7 +34,7 @@ jobs:
           sudo su
           whoami
           ls -la $GITHUB_WORKSPACE
-          docker run -v $(pwd):/zap/wrk/:rw -t owasp/zap2docker-weekly touch /zap/wrk/config/teest.txt
+          docker run -v $(pwd):/zap/wrk/:rw --user root -t owasp/zap2docker-weekly touch /zap/wrk/config/teest.txt
           ls
 
       - name: ZAP Scan
