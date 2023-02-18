@@ -25,6 +25,13 @@ jobs:
           sed -i 's!<url>!'${{ vars.URL }}'!g' $GITHUB_WORKSPACE/config/conf.yaml
 
       - name: ZAP Scan
+        id: scan
         run: |
           docker run -v $GITHUB_WORKSPACE:/zap/wrk/:rw --user root owasp/zap2docker-stable zap.sh -cmd -autorun /zap/wrk/config/conf.yaml
           if cat output.json | jq '.site[].alerts[] | "\(.riskdesc) - \(.name)"' | grep '"High'; then exit 1; else exit 0; fi
+          
+      - uses: actions/upload-artifact@v3
+        if: failure() && steps.scan.outcome != 'success'
+        with:
+          name: zap-results
+          path: $GITHUB_WORKSPACE/output.json
