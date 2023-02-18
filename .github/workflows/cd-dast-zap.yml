@@ -34,4 +34,4 @@ jobs:
         if: failure() && steps.scan.outcome != 'success'
         with:
           name: zap-results
-          path: utput.json
+          path: output.json
