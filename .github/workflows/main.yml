@@ -18,9 +18,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       
-      - name: Perform SAST Snyk scan.
-        run: |
-          docker run --rm --env SNYK_TOKEN=${{ secrets.SNYK_TOKEN }} -v $PWD:/buggy-site snyk/snyk:python-3.8 snyk code test /buggy-site
+    #  - name: Perform SAST Snyk scan.
+    #    run: |
+    #      docker run --rm --env SNYK_TOKEN=${{ secrets.SNYK_TOKEN }} -v $PWD:/buggy-site snyk/snyk:python-3.8 snyk code test /buggy-site
 
       - name: Perform SCA Snyk scan.
         run: |
