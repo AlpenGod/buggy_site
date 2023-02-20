@@ -15,10 +15,8 @@ from django.conf import settings
 from reportlab.platypus.doctemplate import SimpleDocTemplate
 from reportlab.platypus import Spacer, Paragraph
 from django.db import connection
-import pickle
 from django.core.files.storage import FileSystemStorage
 from pathlib import Path
-from xml.etree.ElementTree import parse
 
 # '/' buggy_site view
 def home_view(request):
@@ -49,26 +47,7 @@ class support_view(View):
                 if fs.exists(file.name):
                     fs.delete(file.name)
                 fs.save(file.name, file)
-                output = 'output'
-                if file.name[-3:]=="txt":
-                    try:
-                        #harmful!
-                        output = str(pickle.load(open(path + "/" + file.name,'rb')))
-                    except pickle.UnpicklingError:
-                        output = 'Unserializing error'
-                elif file.name[-3:]=="xml":
-                    with open(path + "/" + file.name) as fh:
-                        #harmful!
-                        tree = parse(fh) 
-                        #lxml <4.6.2 is vulnerable to xss (use &lt; and &gt; instead of < and >)
-                    output = ['xml']
-                    for node in tree.iter():
-                        output.append(node.tag + " " + node.text)
-                elif file.name[-3:]=="jpg" or file.name[-3:]=="png":
-                    output = '<div><img src="/media/uploads/'+file.name+'"/></div>'
-                else:
-                    output = "Unsupported file type"
-                    fs.delete(file.name)
+                output = file.name
             except:
                 output = "Empty"
             #harmful! .cleaned_data missing
@@ -92,8 +71,7 @@ def search_view(request):
     if 'query' in request.session:
         name=request.session.pop('query',{})
         name = name[0].upper() + name[1:].lower()
-        #harmful!
-        cursor.execute("SELECT * from pages_item WHERE title = '" + name +"'")
+        cursor.execute("SELECT * from pages_item WHERE title = %s", [name])
     row=cursor.fetchone()
     context = {
                 'object': row,

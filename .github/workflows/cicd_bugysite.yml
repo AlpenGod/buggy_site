@@ -89,6 +89,8 @@ jobs:
           app-name: 'bugysite'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_D83C7686534D4E4EA7963DB901E9A8F9 }}
+        env:
+          APP_NAME_SECRET_KEY: ${{ secrets.APP_NAME_SECRET_KEY }}
           
   dast:
     runs-on: ubuntu-latest
