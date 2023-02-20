@@ -103,6 +103,11 @@ jobs:
           sed -i 's/<user>/'${{ secrets.BS_USER }}'/g' $GITHUB_WORKSPACE/config/conf.yaml
           sed -i 's!<url>!'${{ vars.URL }}'!g' $GITHUB_WORKSPACE/config/conf.yaml
           
+      - uses: actions/upload-artifact@v3
+        with:
+          name: config-file
+          path: $GITHUB_WORKSPACE/config/conf.yaml
+          
       - name: ZAP Scan
         continue-on-error: true
         id: scan
