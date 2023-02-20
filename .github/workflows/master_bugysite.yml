@@ -102,6 +102,8 @@ jobs:
           sed 's/<pass>/'${{ secrets.BS_PASS }}'/g' $GITHUB_WORKSPACE/config/conf-template.yaml > $GITHUB_WORKSPACE/config/conf.yaml
           sed -i 's/<user>/'${{ secrets.BS_USER }}'/g' $GITHUB_WORKSPACE/config/conf.yaml
           sed -i 's!<url>!'${{ vars.URL }}'!g' $GITHUB_WORKSPACE/config/conf.yaml
+          ls $GITHUB_WORKSPACE/config
+          cat $GITHUB_WORKSPACE/config/conf.yaml
           
       - uses: actions/upload-artifact@v3
         with:
