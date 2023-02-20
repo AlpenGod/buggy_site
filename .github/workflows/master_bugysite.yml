@@ -52,7 +52,6 @@ jobs:
           python-version: '3.8'
         
       - name: Perform SAST Bandit scan.
-        continue-on-error: true
         run: |
           pip install bandit
           python -m bandit -r . -ll
@@ -64,7 +63,6 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Perform SCA Snyk scan.
-        continue-on-error: true
         run: |
           docker run --rm --env SNYK_TOKEN=${{ secrets.SNYK_TOKEN }} --env COMMAND="pip install -r /buggy-site/requirements.txt" \
           -v $PWD:/buggy-site snyk/snyk:python-3.8 snyk test --file=/buggy-site/requirements.txt --json-file-output=/buggy-site/output.json
@@ -111,7 +109,6 @@ jobs:
           path: config/conf.yaml
           
       - name: ZAP Scan
-        continue-on-error: true
         id: scan
         run: |
           docker run -v $GITHUB_WORKSPACE:/zap/wrk/:rw --user root owasp/zap2docker-stable zap.sh -cmd -autorun /zap/wrk/config/conf.yaml
