@@ -28,11 +28,11 @@ jobs:
       - name: Perform SAST Bandit scan.
         run: |
           pip install bandit
-          python -m bandit -r .
+          python -m bandit -r . -f json -o bandit.json -ll
           
       - name: Upload SAST Bandit artifact
         uses: actions/upload-artifact@v2
         with:
           name: Bandit
-          path: bandit-output.html
-        if: always()
+          path: bandit.json
+        if: failure()
