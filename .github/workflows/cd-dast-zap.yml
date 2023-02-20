@@ -1,0 +1,37 @@
+# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
+# More GitHub Actions for Azure: https://github.com/Azure/actions
+# More info on Python, GitHub Actions, and Azure App Service: https://aka.ms/python-webapps-actions
+
+name: Build and deploy Python app to Azure Web App - buggy-app
+
+on:
+  push:
+    branches:
+      - master
+      - feature/*
+  pull_request:
+    types: opened
+  workflow_dispatch:
+
+jobs:
+  CD:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - run: |
+          sed 's/<pass>/'${{ secrets.BS_PASS }}'/g' $GITHUB_WORKSPACE/config/conf-template.yaml > $GITHUB_WORKSPACE/config/conf.yaml
+          sed -i 's/<user>/'${{ secrets.BS_USER }}'/g' $GITHUB_WORKSPACE/config/conf.yaml
+          sed -i 's!<url>!'${{ vars.URL }}'!g' $GITHUB_WORKSPACE/config/conf.yaml
+
+      - name: ZAP Scan
+        id: scan
+        run: |
+          docker run -v $GITHUB_WORKSPACE:/zap/wrk/:rw --user root owasp/zap2docker-stable zap.sh -cmd -autorun /zap/wrk/config/conf.yaml
+          if cat output.json | jq '.site[].alerts[] | "\(.riskdesc) - \(.name)"' | grep '"High'; then exit 1; else exit 0; fi
+          
+      - uses: actions/upload-artifact@v3
+        if: failure() && steps.scan.outcome != 'success'
+        with:
+          name: zap-results
+          path: output.json
