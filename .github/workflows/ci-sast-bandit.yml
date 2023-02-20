@@ -28,4 +28,4 @@ jobs:
       - name: Perform SAST Bandit scan.
         run: |
           pip install bandit
-          python -m bandit -r . -ll
+          python -m bandit -r . -lll
