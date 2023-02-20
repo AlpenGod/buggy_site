@@ -6,6 +6,11 @@ env:
     - "<url>"
     includePaths:
     - "<url>.*"
+    excludePaths:
+    - "<url>/accounts/logout/"
+    - "<url>/accounts/login/"
+    - "<url>/accounts/password/reset/"
+    - "<url>/accounts/signup/"
     authentication:
       method: "form"
       parameters:
@@ -46,6 +51,9 @@ env:
       - "PHP"
       - "MacOS"
       - "Windows"
+      - "Apache"
+      - "IIS"
+      - "Tomcat"
     users:
     - name: "test"
       credentials:
@@ -67,7 +75,7 @@ jobs:
     context: "<url>"
     user: "test"
     url: "<url>"
-    maxDuration: 0
+    maxDuration: 1
     maxDepth: 0
     maxChildren: 0
   name: "spider"
