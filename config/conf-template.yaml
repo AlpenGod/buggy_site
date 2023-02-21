@@ -149,6 +149,10 @@ jobs:
       name: "Generic Padding Oracle"
       threshold: "off"
       strength: "default"
+    - id: 40014
+      name: "Cross Site Scripting (Persistent)"
+      threshold: "off"
+      strength: "default"
   name: "activeScan"
   type: "activeScan"
 - parameters:
