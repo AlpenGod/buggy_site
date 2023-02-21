@@ -24,12 +24,14 @@ jobs:
         with:
           python-version: '3.8'
 
-      - run: |
+      - name: Prepare secret_key
+        env:
+          SECRET_KEY: '{{ secrets.APP_NAME_SECRET_KEY }}'
+        run: |
           echo "SECRET_KEY=$SECRET_KEY" > .env
           pwd
           cat .env
-        env:
-          SECRET_KEY = {{ secrets.APP_NAME_SECRET_KEY }}
+
 
       - name: Create and start virtual environment
         run: |
