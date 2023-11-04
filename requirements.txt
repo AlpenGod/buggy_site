@@ -4,14 +4,14 @@ cffi==1.14.4
 chardet==4.0.0
 cryptography==39.0.1
 defusedxml==0.6.0
-Django==3.2.18
+Django==3.2.23
 django-allauth==0.44.0
 django-countries==7.0
 django-crispy-forms==1.10.0
 django-debug-toolbar==3.2.1
 idna==2.10
 oauthlib==3.1.0
-Pillow==9.3.0
+Pillow==10.0.0
 pycparser==2.20
 PyJWT==2.4.0
 python-dotenv==0.21.0
