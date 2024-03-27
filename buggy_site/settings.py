@@ -25,6 +25,10 @@ load_dotenv(find_dotenv())
 
 SECRET_KEY = os.environ['SECRET_KEY']
 
+login = "admin"
+password = "secure_secret"
+token = "ghp_aasdasdadsadasdaldsjnfjasnfksddsf"
+
 # SECURITY WARNING: don't run with debug turned on in production! //DANGEROUS!
 DEBUG = False
 
