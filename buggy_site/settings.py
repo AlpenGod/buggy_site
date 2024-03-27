@@ -28,6 +28,8 @@ SECRET_KEY = os.environ['SECRET_KEY']
 login = "admin"
 password = "secure_secret"
 token = "ghp_aasdasdadsadasdaldsjnfjasnfksddsf"
+# Fake, random GH PAT to test secret scanning
+gh_pat = "ghp_rAnDoMtOkEn1234567890abcdefghijk"
 
 # SECURITY WARNING: don't run with debug turned on in production! //DANGEROUS!
 DEBUG = False
