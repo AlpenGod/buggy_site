@@ -25,6 +25,9 @@ load_dotenv(find_dotenv())
 
 SECRET_KEY = os.environ['SECRET_KEY']
 
+# Fake, random GH PAT to test secret scanning
+gh_pat = "ghp_rAnDoMtOkEn1234567890abcdefghijk"
+
 # SECURITY WARNING: don't run with debug turned on in production! //DANGEROUS!
 DEBUG = False
 
