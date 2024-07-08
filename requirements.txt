@@ -1,5 +1,5 @@
 asgiref==3.3.2
-certifi==2023.07.22
+certifi==2024.7.4
 cffi==1.14.4
 chardet==4.0.0
 cryptography==42.0.4
